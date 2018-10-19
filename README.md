@@ -1,7 +1,7 @@
-## DMIIM
+# DMIIM
 This repository contains the code for the paper "On the Voronoi Implicit Interface Method" by Alexander Zaitzeff, Selim Esedoglu and Krishnakumar Garikipati.
 
-# Code
+## Code
 The implementation of the parameterized curve code in sections four through six can be found in the para_curves folder.
 The level set implementation of DMIIM is in the level_set_DMIIM folder. 
 
@@ -9,5 +9,5 @@ Not included is redisiting code on a grid (only needed for the level set impleme
 
 If you would like to use you own redisting code I mark the lines in dictmapping3.m and dictmapping2.m. In the tests files DMIIM2, DMIIM3, runtestgrimreaperlevelset.m we also used redisting for initialization (though it is not required).
 
-# Simulations from the paper  
+## Simulations from the paper  
 The test folder contains code to generate the simulations from the paper. The parameterized tests specify what table number they correspond to.
