@@ -10,7 +10,7 @@ mu1=mu(1);
 mu2=mu(2);
 mu3=mu(3);
 
-[xl,yl,xr,yr,xb,yb,~]=VIIM_initialdata_general(angle1,angle2,mu,np,ylim,0);
+[xl,yl,xr,yr,xb,yb]=VIIM_initialdata_general(angle1,angle2,mu,np,ylim,0);
 for t=1:nt
     
     x1=[xl xr(end-1:-1:1)];
