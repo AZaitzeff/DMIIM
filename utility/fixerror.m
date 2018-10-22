@@ -1,0 +1,10 @@
+function [error,truey]=fixerror(angle,x,y,T,eps)
+[~,np]=size(x);
+nbhrcor=.04;
+[~,truey,~]=VIIM_initialdata(angle,np,eps,T);
+%truey=real((1/coef)*log(cos(coef*x))-coef*T);
+difference=(truey-y);
+mask=abs((x-.25))>nbhrcor;
+x1=x(mask);
+dif=difference(mask);
+error=trap_per(dif,x1)/(abs(truey(1))*(x1(end)));
