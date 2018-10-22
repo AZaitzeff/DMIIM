@@ -1,6 +1,6 @@
-function [x1,y1,x2,y2,x3,y3]=VIIM_initialdata_general(angle1,angle2,N,mu,flip,T)
-mu12=(mu(1)+mu(2))/2;
-mu13=(mu(1)+mu(3))/2;
+function [x1,y1,x2,y2,x3,y3]=VIIM_initialdata_general(angle1,angle2,N,mu12,mu13,mu23,flip,T)
+%mu12=(mu(1)+mu(2))/2;
+%mu13=(mu(1)+mu(3))/2;
 angle1r=angle1/180*pi;
 angle2r=angle2/180*pi;
 angle3r=2*pi-angle1r-angle2r;
