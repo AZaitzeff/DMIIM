@@ -4,8 +4,7 @@ addpath('../para_curves/DMIIM_and_VIIM')
 
 
 oT1=18/512;
-%num=4;
-num=1;
+num=4;
 for j = 1:4*num
     i=mod(j-1,num)+1;
     DT=1/(2^(12+i));
