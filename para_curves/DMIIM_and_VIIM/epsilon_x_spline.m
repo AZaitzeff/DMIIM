@@ -84,13 +84,12 @@ end
 
 end
 
-function p = newtonsearch(fun, a, b)%is really the secant method.
+function p = newtonsearch(fun, x0)%is really the secant method.
 
     tol=1e-8;
     maxiter=1000;
     h=1e-8;
     invh=1e8;
-    x0 = (a + b)/2;
     me=1e-11;
     x1=x0+h;
     f0=fun(x0);
@@ -103,7 +102,7 @@ function p = newtonsearch(fun, a, b)%is really the secant method.
         end
         
         %disterror=max(disterror,ddist);
-        df=(f1-f0)/(x1-x0);
+        df=(f1-f0)/(x1-x0+me);
         x0=x1;
         f0=f1;
         x1=x1-f1/(df+me);

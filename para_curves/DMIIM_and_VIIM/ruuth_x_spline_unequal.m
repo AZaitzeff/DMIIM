@@ -388,7 +388,7 @@ function p = newtonsearch(fun, x0,h,invh,tol,limb,limt)%secant method
             break
         end
         %disterror=max(disterror,ddist);
-        df=(f1-f0)/(x1-x0);
+        df=(f1-f0)/(x1-x0+me);
         f0=f1;
         x0=x1;
         x1=x1-f1/(df+me);

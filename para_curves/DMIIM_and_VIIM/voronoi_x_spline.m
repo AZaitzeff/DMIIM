@@ -166,7 +166,7 @@ function p = newtonsearch(fun, a, b)%is really the secant method.
         end
         
         %disterror=max(disterror,ddist);
-        df=(f1-f0)/(x1-x0);
+        df=(f1-f0)/(x1-x0+me);
         x0=x1;
         f0=f1;
         x1=x1-f1/(df+me);
