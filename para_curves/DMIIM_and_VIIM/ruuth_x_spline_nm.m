@@ -319,10 +319,10 @@ function p = newtonsearch(fun, x0,h,invh,tol,limb,limt)%secant method
             break
         end
         %disterror=max(disterror,ddist);
-        df=(f1-f0)/(x1-x0+me);
+        df=(x1-x0)/(f1-f0+me);
         f0=f1;
         x0=x1;
-        x1=x1-f1/(df+me);
+        x1=x1-f1*df;
 
     end
     if i==maxiter || limb-x1>1e-5 || x1-limt>1e-5
