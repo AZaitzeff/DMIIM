@@ -35,7 +35,7 @@ function [error]=testanyangleFT_nonsym(angle1,angle2,gam,muoption,DT,T,ren,np,ep
         ruuthfunccenter=@(p)voronoireconstcenter(p);
     else
         vars=load(['dict/dict' num2str(angle1) num2str(angle2) 'Dt' loadname 'mu.mat']);
-        ruuthfunc=@(p,a)dictmapreconstz(p,a,vars.points,vars.phimap,vars.numpts,vars.slopes,ratio,vars.dist);
+        ruuthfunc=@(p,a)dictmapreconst(p,a,vars.points,vars.phimap,vars.numpts,vars.slopes,ratio,vars.dist);
         ruuthfunccenter=@(p)dictmapreconstcenter(p,vars.points{4},vars.phimap{4},vars.num,ratio,vars.dist);
     end
     ti=cputime;
