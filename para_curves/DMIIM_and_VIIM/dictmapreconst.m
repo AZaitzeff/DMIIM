@@ -1,4 +1,4 @@
-function [lsv,phase]=dictmapreconstz(point,access,pointscell,phimapcell,num,slopes,ratio,dist)
+function [lsv,phase]=dictmapreconst(point,access,pointscell,phimapcell,num,slopes,ratio,dist)
 point=point/ratio;
 points=pointscell{access};
 phimap=phimapcell{access};
@@ -12,7 +12,6 @@ if rem==0 || rem==1 || ind<num || ind>z-num
     point(phase)=[];
     lsv=abs(lsv-min(point));
 else
-
     
     
     x0=points(ind,1);

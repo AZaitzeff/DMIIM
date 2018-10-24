@@ -153,54 +153,6 @@ function [phi]=phimapfunc(xc,yc,theta2,theta3,pp1,pp1d,pp1dd,x1,y1,...
 end
 
 
-function [phi]=phimapfuncside(xc,yc,theta2,theta3,pp1,pp1d,pp1dd,x1,y1,...
-    ppr2,ppr2d,ppr2dd,rx2,ry2,ppu2,ppu2d,ppu2dd,x2,y2,ylast2,...
-    ppr3,ppr3d,ppr3dd,rx3,ry3,ppu3,ppu3d,ppu3dd,x3,y3,ylast3,xrotate,yrotate)
-    phi=zeros(3,1);
-    
-    
-    [x0]=argmin(xc,yc,x1,y1);
-    [dmin1,~,y0]=distancetospline(xc,yc,x0,pp1,pp1d,pp1dd);
-    if yc>y0
-        dmin1=-dmin1;
-    end
-    
-    if yc<=ylast2
-        [y0]=argmin(yc,xc,y2,x2);
-        [dmin2,~,x0]=distancetospline(yc,xc,y0,ppu2,ppu2d,ppu2dd);
-        if xc<x0
-            dmin2=-dmin2;
-        end
-    else
-        [xcr2,ycr2]=rotatepts(xc,yc,-theta2,xrotate,yrotate);
-        [x0]=argmin(xcr2,ycr2,rx2,ry2);
-        [dmin2,~,y0]=distancetospline(xcr2,ycr2,x0,ppr2,ppr2d,ppr2dd);
-        if ycr2>y0
-            dmin2=-dmin2;
-        end
-    end
-    
-    if yc<=ylast3
-        [y0]=argmin(yc,xc,y3,x3);
-        [dmin3,~,x0]=distancetospline(yc,xc,y0,ppu3,ppu3d,ppu3dd);
-        if xc>x0
-            dmin3=-dmin3;
-        end
-    else
-        [xcr3,ycr3]=rotatepts(xc,yc,theta3,xrotate,yrotate);
-        [x0]=argmin(xcr3,ycr3,rx3,ry3);
-        [dmin3,~,y0]=distancetospline(xcr3,ycr3,x0,ppr3,ppr3d,ppr3dd);
-        if ycr3>y0
-            dmin3=-dmin3;
-        end
-    end
-
-    
-    phi(1)=dmin1;
-    phi(2)=dmin2;
-    phi(3)=dmin3;
-end
-
 function val=ruuth_projection(y,f,phimap,points)
     phi=f(y);
     [~,I]=min(sum((phimap-phi).^2,2));

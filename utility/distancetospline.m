@@ -1,4 +1,7 @@
-function [g,x0,y0]=distancetospline(x,y,x0,pp,pp1,pp2)%unsigned distance
+function [g,x0,y0]=distancetospline(x,y,x0,pp,pp1,pp2,unsign)%unsigned distance
+if nargin<7
+    unsign=1;
+end
 tol=1e-10;
 maxiter=5000;
 me=1e-12;
@@ -13,11 +16,19 @@ for i=1:maxiter
     end
     x0=x0-dx./(ddx+me);
 end
-g=dist(x,y,x0,y0);
+if unsign
+    g=dist(x,y,x0,y0);
+else
+    g=signdist(x,y,x0,y0);
+end
 end
 
 function val=dist(x0,y0,x,y)
     val=sqrt((x-x0).^2+(y-y0).^2);
+end
+
+function val=signdist(x0,y0,x,y)
+    val=sign(y0-y)*sqrt((x-x0).^2+(y-y0).^2);
 end
 
 function dx=ddist(x0,y0,x,y,y1)

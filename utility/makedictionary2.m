@@ -225,7 +225,7 @@ function dmin=distance(xr,yr,transx,transy,pp,ppd,ppdd,minx,sloper,ratior)
         end
     else
         [x0]=argmin(xr,yr,transx,transy);
-        [dmin,~]=distancetospline(xr,yr,x0,pp,ppd,ppdd);
+        [dmin,~]=distancetospline(xr,yr,x0,pp,ppd,ppdd,0);
     end
 
 end

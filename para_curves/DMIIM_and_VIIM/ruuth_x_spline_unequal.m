@@ -107,13 +107,13 @@ for i=1:Nz-1
     if mask(i)
     sx=nx2(i);
     f=@(y) redistfunc(sx,y,dictmap,1);
-    %ys=linspace(ny2(i)-.05,ny2(i)+.05,501);
-    %master=zeros(1,501);
+    %ys=linspace(yb(i),yt(i),51);
+    %master=zeros(1,51);
 
-    %for j=1:501    
+    %for j=1:51    
     %    master(j)=f(ys(j));
     %end
-    %plot(ys,master);hold on;plot(ys(251),master(251),'*')
+    %plot(ys,master);hold on;plot(ys(26),master(26),'*')
     %yv=newtonsearch(f,ny2(i),h,invh,tol,yb(i),yt(i));
     %return
     %plot(x1,y1);hold on;plot(sx,ny1(i),'*');
@@ -229,21 +229,21 @@ function [phi]=phimapfuncside(xc,yc,theta2,theta3,pp1,pp1d,pp1dd,x1,y1,...
     
     [x0]=argmin(xc,yc,x1,y1);
     [dmin1,~,y0]=distancetospline(xc,yc,x0,pp1,pp1d,pp1dd);
-    if yc>y0
+    if yc<y0
         dmin1=-dmin1;
     end
     
     if yc<=ylast2
         [y0]=argmin(yc,xc,y2,x2);
         [dmin2,~,x0]=distancetospline(yc,xc,y0,ppu2,ppu2d,ppu2dd);
-        if xc<x0
+        if xc>x0
             dmin2=-dmin2;
         end
     else
         [xcr2,ycr2]=rotatepts(xc,yc,-theta2,xrotate,yrotate);
         [x0]=argmin(xcr2,ycr2,rx2,ry2);
         [dmin2,~,y0]=distancetospline(xcr2,ycr2,x0,ppr2,ppr2d,ppr2dd);
-        if ycr2>y0
+        if ycr2<y0
             dmin2=-dmin2;
         end
     end
@@ -251,14 +251,14 @@ function [phi]=phimapfuncside(xc,yc,theta2,theta3,pp1,pp1d,pp1dd,x1,y1,...
     if yc<=ylast3
         [y0]=argmin(yc,xc,y3,x3);
         [dmin3,~,x0]=distancetospline(yc,xc,y0,ppu3,ppu3d,ppu3dd);
-        if xc>x0
+        if xc<x0
             dmin3=-dmin3;
         end
     else
         [xcr3,ycr3]=rotatepts(xc,yc,theta3,xrotate,yrotate);
         [x0]=argmin(xcr3,ycr3,rx3,ry3);
         [dmin3,~,y0]=distancetospline(xcr3,ycr3,x0,ppr3,ppr3d,ppr3dd);
-        if ycr3>y0
+        if ycr3<y0
             dmin3=-dmin3;
         end
     end
@@ -382,7 +382,6 @@ function p = newtonsearch(fun, x0,h,invh,tol,limb,limt)%secant method
     %disterror=0;
     for i=1:maxiter
         f1=fun(x1);
-        
         %disterror=max(disterror,ddist);
         if abs(f1)<tol
             break
@@ -394,9 +393,9 @@ function p = newtonsearch(fun, x0,h,invh,tol,limb,limt)%secant method
         x1=x1-f1*(df);
 
     end
-    if i==maxiter || limb-x>1e-5 || x-limt>1e-5
-        limb-x
-        x-limt
+    if i==maxiter || limb-x1>1e-5 || x1-limt>1e-5
+        limb-x1
+        x1-limt
         p = bisectionserach(fun, limb,limt,tol);
         warning('did bisection search')
 
