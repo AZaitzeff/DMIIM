@@ -8,6 +8,7 @@ tol=1e-10;
 temp=inf;
 bestx=0;
 besty=0;
+me=1e-11;
 %---------------
 %this code tested formulas in sec 6.2 vs finite differences
 %  h=1e-4;

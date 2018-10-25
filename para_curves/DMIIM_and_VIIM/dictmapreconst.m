@@ -8,9 +8,9 @@ rem=mod(ind,num);
 ind1=ind;
 ind2=ind;
 if rem==0 || rem==1 || ind<num || ind>z-num
-    [lsv,phase]=min(point);
+    [lsv,phase]=max(point);
     point(phase)=[];
-    lsv=abs(lsv-min(point));
+    lsv=abs(lsv-max(point));
 else
     
     

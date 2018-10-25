@@ -89,7 +89,8 @@ for i=1:Nz-1
     if mask(i)
     sx=nx1(i);
     f=@(y) redistfunc(sx,y,dictmap,1);
-    yv=newtonsearch(f,ny1(i),h,invh,tol,yb(i),yt(i)); 
+    yv=newtonsearch(f,ny1(i),h,invh,tol,yb(i),yt(i));
+    %yv=newtonsearchold(f,ny1(i),h,invh,tol,yb(i),yt(i))
     ny1(i)=yv;
     end
 end
@@ -118,7 +119,6 @@ for i=1:Nz-1
     %return
     %plot(x1,y1);hold on;plot(sx,ny1(i),'*');
     
-   
     yv=newtonsearch(f,ny2(i),h,invh,tol,yb(i),yt(i));
     ny2(i)=yv;
     end
@@ -377,7 +377,8 @@ function p = newtonsearch(fun, x0,h,invh,tol,limb,limt)%secant method
     %h=1e-3;
     %invh=1e3;
     me=1e-11;
-    x1=x0+h;
+    x1=x0;
+    x0=x0+h;
     f0=fun(x0);
     %disterror=0;
     for i=1:maxiter
