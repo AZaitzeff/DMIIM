@@ -103,6 +103,6 @@ for t=1:20
     [phi,~]=VIIMwDM3(phi,gamma,h,dt,1,ren,map,width,flag,funcs,DMIIM);
     phis{t+1}=phi;
     t
-    save(['data/3dsqr' num2str(flag) 'DMMIM' num2str(DMIIM) '.mat'],'phis','dt','ren','-v7.3');
+    save(['data/3dsqr' num2str(flag) 'DMIIM' num2str(DMIIM) '.mat'],'phis','dt','ren','-v7.3');
 end
 
