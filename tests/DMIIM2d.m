@@ -50,7 +50,7 @@ for i=1:total-2
 end
 
 
-N=100;
+N=400;
 width=N;
 x=linspace(0,1-1/N,N);
 h=x(2)-x(1);
