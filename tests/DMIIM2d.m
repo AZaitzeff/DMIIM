@@ -30,7 +30,7 @@ for i=1:total-2
             key=[i j k];
             st=[(mod(i,jump)==0) (mod(j,jump)==0) (mod(k,jump)==0)];
             totalv=sum(st);
-            op.index=mod(totalv,cases)+1;
+            op.index=totalv+1;
             op.order=key;
             if totalv==1
                 ind=find(st==1);
@@ -50,7 +50,7 @@ for i=1:total-2
 end
 
 
-N=400;
+N=200;
 width=N;
 x=linspace(0,1-1/N,N);
 h=x(2)-x(1);
@@ -82,10 +82,14 @@ for z=1:total
     
 end
 
-angles=[120,90,146];
+angles=[120,90,146,120];
 funcs={};
-for i=1:3
-    vars=load(['dict/dict' num2str(angles(i)) 'grid.mat']);
+for i=1:4
+    if i<4
+    vars=load(['../poly/ruuthdict/dict' num2str(angles(i)) 'mgrid.mat']);
+    else
+        vars=load(['../poly/ruuthdict/dict' num2str(angles(i)) 'm2grid.mat']);
+    end
     ratio=sqrt(2^(11)*DT);
     funcs{i}= @(p) dictmaprecgrid(p,vars.points,vars.phimap,vars.num,...
         vars.numpts*vars.num,vars.slopes,ratio,vars.dist);
