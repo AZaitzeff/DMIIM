@@ -4,10 +4,10 @@ point=point/ratio;
 %rem=mod(ind,num);
 rem2=mod(ind,numpts);
 if rem2>numpts-num %|| max(abs(point))>.3
-    [dmax,phase]=max(-point);
-    lsv=-point-dmax;
+    [dmax,phase]=max(point);
+    lsv=point-dmax;
     point(phase)=[];
-    lsv(phase)=(dmax-max(-point));
+    lsv(phase)=(dmax-max(point));
 else
     lsv=zeros(1,3);
     
