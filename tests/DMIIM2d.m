@@ -86,9 +86,9 @@ angles=[120,90,146,120];
 funcs={};
 for i=1:4
     if i<4
-    vars=load(['dict/dict' num2str(angles(i)) 'mgrid.mat']);
+    vars=load(['dict/dict' num2str(angles(i)) 'grid.mat']);
     else
-        vars=load(['dict/dict' num2str(angles(i)) 'm2grid.mat']);
+        vars=load(['dict/dict' num2str(angles(i)) '2grid.mat']);
     end
     ratio=sqrt(2^(11)*DT);
     funcs{i}= @(p) dictmaprecgrid(p,vars.points,vars.phimap,vars.num,...
