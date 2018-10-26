@@ -1,5 +1,5 @@
 N=512;
-nt=80;
+nt=100;
 %N=128;
 %nt=10;
 
@@ -48,7 +48,7 @@ phi{2}=temp;
 phi{3}=temp;
 [temp,~,~] = redistz(z,width,1,h,h);% replace with own redistancing code
 phi{4}=temp;
-T=.11/vel;
+T=.14/vel;
 dt=h^2/(5*max(gamma));
 DT=T/nt;
 ren=ceil(DT/dt);
