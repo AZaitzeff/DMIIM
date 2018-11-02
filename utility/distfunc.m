@@ -52,6 +52,7 @@ me=1e-11;
 % return
 %---------------
 %vals=[];
+count=1;
 for i=1:MAXITER
     
         
@@ -77,11 +78,7 @@ for i=1:MAXITER
         error('newval is nan')
     end
     
-    if mod(i,10)==0
-        x=x+randn()*.01;
-        y=y+randn()*.01;
-        
-    end
+    
     
     %vals(i)=max(abs(objx)/(sqrt(n1*nx)),abs(objy)/(sqrt(n1*ny)));
     %if i==1
@@ -90,11 +87,17 @@ for i=1:MAXITER
     %d=[[objxx,objxy];[objxy,objyy]]\[objx;objy];
     %x=x-d(1);
     %y=y-d(2);
-    x=x-(objyy*objx-objxy*objy)/(objxx*objyy-objxy^2);
-    y=y-(-objxy*objx+objxx*objy)/(objxx*objyy-objxy^2);
+    if newval<1e-4 || count<10
+        x=x-(objyy*objx-objxy*objy)/(objxx*objyy-objxy^2);
+        y=y-(-objxy*objx+objxx*objy)/(objxx*objyy-objxy^2);
+    else
+        count=1;
+        x=x0+randn()*.01;
+        y=y0+randn()*.01;   
+    end
+    count=count+1;
     
 end
-
 %vals(i)=max(abs(objx)/(sqrt(n1*nx)),abs(objy)/(sqrt(n1*ny)));
 if i==MAXITER
     x=bestx;

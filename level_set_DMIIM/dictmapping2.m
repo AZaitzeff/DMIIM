@@ -22,7 +22,7 @@ function [phi]=dictmapping2(phi,h,level,FLAG,map,funcs,DMIIM)
     end
     
     if DMIIM
-    indices=find(maxvals<2*h);
+    indices=find(maxvals<2.5*h);
     redistsflat=reshape(redists,[c n*m]);
     
 
