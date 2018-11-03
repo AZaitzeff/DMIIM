@@ -1,5 +1,5 @@
 # DMIIM
-This repository contains the code for the paper "On the Voronoi Implicit Interface Method" by Alexander Zaitzeff, Selim Esedoglu and Krishnakumar Garikipati.
+This repository contains the code for the paper "On the Voronoi Implicit Interface Method" by Alexander Zaitzeff, Selim Esedoglu and Krishnakumar Garikipati (https://arxiv.org/abs/1810.10920).
 
 ## Code
 The implementation of the parameterized curve code in sections four through six can be found in the para_curves folder.
@@ -10,4 +10,10 @@ Not included is redisiting code on a grid (only needed for the level set impleme
 If you would like to use you own redisting code I mark the lines in dictmapping3.m and dictmapping2.m. In the tests files DMIIM2, DMIIM3, runtestgrimreaperlevelset.m we also used redisting for initialization (though it is not required).
 
 ## Simulations from the paper  
-The test folder contains code to generate the simulations from the paper. The parameterized tests specify what table number they correspond to.
+The test folder contains code to generate the simulations from the paper. The parameterized tests specify what table number they correspond to. Note that they may take a long time to run.
+
+Videos of the output of the DMIIM via levels set can be found of youtube:
+Two Grim Reapers colliding: https://youtu.be/Iebnyb0eTOY
+2d multiple drains and angle conditions: https://youtu.be/C1mZginb_u4
+3d multiple grains and angle conditions: https://youtu.be/3UzYtZFuTJE
+
